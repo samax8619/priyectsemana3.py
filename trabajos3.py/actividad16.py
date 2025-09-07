@@ -1,15 +1,15 @@
-
 import random
+import time
 
-temp_actual = int(input("Ingrese la temperatura actual: "))
-temp_deseada = int(input("Ingrese la temperatura deseada: "))
+humedad = float(input("Ingrese la humedad actual del suelo (0-100): "))
+umbral = float(input("Ingrese el umbral deseado de humedad (0-100): "))
 
-while abs(temp_actual - temp_deseada) > 1:
-    if temp_actual > temp_deseada:
-        print(f"Temperatura {temp_actual}° -> Aire acondicionado encendido")
-        temp_actual -= random.randint(1, 2)
-    elif temp_actual < temp_deseada:
-        print(f"Temperatura {temp_actual}° -> Calefacción encendida")
-        temp_actual += random.randint(1, 2)
-
-print(f"Temperatura alcanzada: {temp_actual}°")
+while True:
+    if humedad < umbral:
+        print(f"Humedad: {humedad:.2f}% - Activando riego...")
+        time.sleep(2)
+        humedad += random.uniform(5, 15)
+    else:
+        print(f"Humedad: {humedad:.2f}% - Humedad adecuada, sin riego.")
+        break
+    time.sleep(1)
