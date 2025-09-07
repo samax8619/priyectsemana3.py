@@ -1,14 +1,10 @@
-import random
+hora = int(input("Ingrese la hora actual (0-23): "))
+presencia = input("¿Hay alguien en casa? (si/no): ").lower()
 
-temp_actual = int(input("Ingrese la temperatura actual: "))
-temp_deseada = int(input("Ingrese la temperatura deseada: "))
-
-while abs(temp_actual - temp_deseada) > 1:
-    if temp_actual > temp_deseada:
-        print(f"Temperatura {temp_actual}° -> Aire acondicionado encendido")
-        temp_actual -= random.randint(1, 2)
-    elif temp_actual < temp_deseada:
-        print(f"Temperatura {temp_actual}° -> Calefacción encendida")
-        temp_actual += random.randint(1, 2)
-
-print(f"Temperatura alcanzada: {temp_actual}°")
+if 18 <= hora or hora < 6:
+    if presencia == "si":
+        print("Es de noche y hay alguien en casa. Luces encendidas.")
+    else:
+        print("Es de noche pero no hay nadie en casa. Luces apagadas.")
+else:
+    print("Es de día. Luces apagadas.")
